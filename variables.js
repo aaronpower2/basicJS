@@ -14,22 +14,50 @@
 
 // create a random number
 function randNum() {
-    return Math.floor(Math.random() * 100)
+    return Math.ceil(Math.random() * 100)
 }
-console.log(randNum())
+
+// take an array and set its length and contents
+function fill(thisArray) {
+    // set the length of the array to a random number between 1 and 100
+    thisArray.length = randNum()
+    
+    //fill this array with random numbers between 1 and 100
+    let i = 0
+    while (i < thisArray.length) {
+        thisArray[i] = randNum()
+        i ++
+    }
+    return thisArray
+}
+
+//calc sum of array contents
+function arraySum(thisArray) {
+
+    let i = 0
+    let sum = 0
+    while (i < thisArray.length) {
+        // console.log(thisArray[i])
+        sum += thisArray[i]
+        i++
+    }
+    return sum
+
+}
 
 //init array
-let myArray = [1,2,3,4,5]
-let arrayLen = myArray.length
+let myArray = []
 
-//reverse array items
-myArray.reverse()
+//populate myArray
+fill(myArray)
+//check content
+console.log(myArray)
 
-let i = 0
-let arraySum = 0
+//sort the content highest to lowest
+myArray.sort(function(a,b){return b-a})
+console.log(myArray)
 
-while (i < arrayLen) {
-    arraySum += myArray[i]
-    i++
-    console.log(arraySum)
-}
+//sum the contents
+let total = arraySum(myArray)
+console.log(total)
+
